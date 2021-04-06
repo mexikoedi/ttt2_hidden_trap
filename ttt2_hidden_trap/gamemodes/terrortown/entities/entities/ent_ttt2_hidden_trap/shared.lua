@@ -3,7 +3,7 @@ if SERVER then
     AddCSLuaFile("init.lua")
     AddCSLuaFile("shared.lua")
 end
-
+test
 ENT.Type = "anim"
 ENT.Base = "base_anim"
 ENT.PrintName = "Hidden Trap"
