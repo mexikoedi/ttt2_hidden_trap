@@ -6,6 +6,7 @@ function ENT:Initialize()
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetMoveType(MOVETYPE_VPHYSICS)
     self:SetSolid(SOLID_VPHYSICS)
+    self:DrawShadow(false)
 
     if self:GetPhysicsObject():IsValid() then
         self:GetPhysicsObject():EnableMotion(false)
