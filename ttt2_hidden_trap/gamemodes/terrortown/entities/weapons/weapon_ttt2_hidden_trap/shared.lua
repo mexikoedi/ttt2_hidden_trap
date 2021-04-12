@@ -51,6 +51,9 @@ SWEP.EquipMenuData = {
 function SWEP:Initialize()
     if CLIENT then
         self:AddHUDHelp("ttt2_hidden_trap_help1", "ttt2_hidden_trap_help2", true)
+    end
+
+    if SERVER then
         self.Primary.ClipSize = GetConVar("ttt2_hidden_trap_clipSize"):GetInt()
         self.Primary.DefaultClip = GetConVar("ttt2_hidden_trap_ammo"):GetInt()
     end
@@ -59,8 +62,8 @@ end
 if SERVER then
     function SWEP:PrimaryAttack()
         if not self:CanPrimaryAttack() then return end
-        self:SetNextPrimaryFire(CurTime() + 1)
         self.currentOwner = self:GetOwner()
+        self:SetNextPrimaryFire(CurTime() + 1)
 
         local tr = util.TraceLine({
             start = self.currentOwner:GetShootPos(),
