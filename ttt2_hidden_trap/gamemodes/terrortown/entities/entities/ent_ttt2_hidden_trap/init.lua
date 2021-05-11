@@ -31,11 +31,11 @@ function ENT:Touch(toucher)
 
     if toucher:GetTeam() == attacker:GetTeam() then return end
 
-    if GetConVar("ttt2_hidden_trap_sound_damage"):GetBool() then
+    if GetConVar("ttt2_hidden_trap_damage_sound"):GetBool() then
         toucher:EmitSound("hidden_trap3.wav")
     end
 
-    if GetConVar("ttt2_hidden_trap_popup"):GetBool() then
+    if GetConVar("ttt2_hidden_trap_damage_popup"):GetBool() then
         net.Start("ttt2_hidden_trap_epop")
         net.Send(toucher)
     end
