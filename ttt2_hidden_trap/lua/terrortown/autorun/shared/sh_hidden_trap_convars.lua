@@ -1,13 +1,13 @@
 -- convars added with default values
-CreateConVar("ttt2_hidden_trap_sound_primary", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the primary attack")
+CreateConVar("ttt2_hidden_trap_primary_sound", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the primary attack")
 
-CreateConVar("ttt2_hidden_trap_sound_secondary", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the secondary attack")
+CreateConVar("ttt2_hidden_trap_secondary_sound", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the secondary attack")
 
-CreateConVar("ttt2_hidden_trap_sound_damage", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the damage")
+CreateConVar("ttt2_hidden_trap_damage_sound", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the damage")
 
-CreateConVar("ttt2_hidden_trap_popup", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Popup because of the damage")
+CreateConVar("ttt2_hidden_trap_damage_popup", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Popup because of the damage")
 
-CreateConVar("ttt2_hidden_trap_popup_duration", "5", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Popup duration")
+CreateConVar("ttt2_hidden_trap_damage_popup_duration", "5", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Popup duration of the damage popup")
 
 CreateConVar("ttt2_hidden_trap_damage", "20", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Damage of the Hidden Trap")
 
@@ -24,11 +24,11 @@ if CLIENT then
 end
 
 hook.Add("TTTUlxInitCustomCVar", "TTT2HiddenTrapInitRWCVar", function(name)
-    ULib.replicatedWritableCvar("ttt2_hidden_trap_sound_primary", "rep_ttt2_hidden_trap_sound_primary", GetConVar("ttt2_hidden_trap_sound_primary"):GetBool(), true, false, name)
-    ULib.replicatedWritableCvar("ttt2_hidden_trap_sound_secondary", "rep_ttt2_hidden_trap_sound_secondary", GetConVar("ttt2_hidden_trap_sound_secondary"):GetBool(), true, false, name)
-    ULib.replicatedWritableCvar("ttt2_hidden_trap_sound_damage", "rep_ttt2_hidden_trap_sound_damage", GetConVar("ttt2_hidden_trap_sound_damage"):GetBool(), true, false, name)
-    ULib.replicatedWritableCvar("ttt2_hidden_trap_popup", "rep_ttt2_hidden_trap_popup", GetConVar("ttt2_hidden_trap_popup"):GetBool(), true, false, name)
-    ULib.replicatedWritableCvar("ttt2_hidden_trap_popup_duration", "rep_ttt2_hidden_trap_popup_duration", GetConVar("ttt2_hidden_trap_popup_duration"):GetInt(), true, false, name)
+    ULib.replicatedWritableCvar("ttt2_hidden_trap_primary_sound", "rep_ttt2_hidden_trap_primary_sound", GetConVar("ttt2_hidden_trap_primary_sound"):GetBool(), true, false, name)
+    ULib.replicatedWritableCvar("ttt2_hidden_trap_secondary_sound", "rep_ttt2_hidden_trap_secondary_sound", GetConVar("ttt2_hidden_trap_secondary_sound"):GetBool(), true, false, name)
+    ULib.replicatedWritableCvar("ttt2_hidden_trap_damage_sound", "rep_ttt2_hidden_trap_damage_sound", GetConVar("ttt2_hidden_trap_damage_sound"):GetBool(), true, false, name)
+    ULib.replicatedWritableCvar("ttt2_hidden_trap_damage_popup", "rep_ttt2_hidden_trap_damage_popup", GetConVar("ttt2_hidden_trap_damage_popup"):GetBool(), true, false, name)
+    ULib.replicatedWritableCvar("ttt2_hidden_trap_damage_popup_duration", "rep_ttt2_hidden_trap_damage_popup_duration", GetConVar("ttt2_hidden_trap_damage_popup_duration"):GetInt(), true, false, name)
     ULib.replicatedWritableCvar("ttt2_hidden_trap_damage", "rep_ttt2_hidden_trap_damage", GetConVar("ttt2_hidden_trap_damage"):GetInt(), true, false, name)
     ULib.replicatedWritableCvar("ttt2_hidden_trap_ammo", "rep_ttt2_hidden_trap_ammo", GetConVar("ttt2_hidden_trap_ammo"):GetInt(), true, false, name)
     ULib.replicatedWritableCvar("ttt2_hidden_trap_clipSize", "rep_ttt2_hidden_trap_clipSize", GetConVar("ttt2_hidden_trap_clipSize"):GetInt(), true, false, name)
@@ -53,32 +53,32 @@ if CLIENT then
         tttrslst1:SetSpacing(5)
 
         tttrslst1:AddItem(xlib.makecheckbox{
-            label = "ttt2_hidden_trap_sound_primary (Def. 1)",
-            repconvar = "rep_ttt2_hidden_trap_sound_primary",
+            label = "ttt2_hidden_trap_primary_sound (Def. 1)",
+            repconvar = "rep_ttt2_hidden_trap_primary_sound",
             parent = tttrslst1
         })
 
         tttrslst1:AddItem(xlib.makecheckbox{
-            label = "ttt2_hidden_trap_sound_secondary (Def. 1)",
-            repconvar = "rep_ttt2_hidden_trap_sound_secondary",
+            label = "ttt2_hidden_trap_secondary_sound (Def. 1)",
+            repconvar = "rep_ttt2_hidden_trap_secondary_sound",
             parent = tttrslst1
         })
 
         tttrslst1:AddItem(xlib.makecheckbox{
-            label = "ttt2_hidden_trap_sound_damage (Def. 1)",
-            repconvar = "rep_ttt2_hidden_trap_sound_damage",
+            label = "ttt2_hidden_trap_damage_sound (Def. 1)",
+            repconvar = "rep_ttt2_hidden_trap_damage_sound",
             parent = tttrslst1
         })
 
         tttrslst1:AddItem(xlib.makecheckbox{
-            label = "ttt2_hidden_trap_popup (Def. 1)",
-            repconvar = "rep_ttt2_hidden_trap_popup",
+            label = "ttt2_hidden_trap_damage_popup (Def. 1)",
+            repconvar = "rep_ttt2_hidden_trap_damage_popup",
             parent = tttrslst1
         })
 
         tttrslst1:AddItem(xlib.makeslider{
-            label = "ttt2_hidden_trap_popup_duration (Def. 5)",
-            repconvar = "rep_ttt2_hidden_trap_popup_duration",
+            label = "ttt2_hidden_trap_damage_popup_duration (Def. 5)",
+            repconvar = "rep_ttt2_hidden_trap_damage_popup_duration",
             min = 0,
             max = 15,
             decimal = 0,
