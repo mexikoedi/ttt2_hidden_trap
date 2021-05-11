@@ -80,7 +80,7 @@ if SERVER then
             ent:SetAngles(ang)
             ent:Spawn()
 
-            if GetConVar("ttt2_hidden_trap_sound_primary"):GetBool() then
+            if GetConVar("ttt2_hidden_trap_primary_sound"):GetBool() then
                 self.currentOwner:EmitSound("hidden_trap1.wav")
             end
 
@@ -103,7 +103,7 @@ if SERVER then
         self.currentOwner = self:GetOwner()
         self.NextSecondaryAttack = CurTime() + self.Secondary.Delay
 
-        if GetConVar("ttt2_hidden_trap_sound_secondary"):GetBool() and not self.LoopSound then
+        if GetConVar("ttt2_hidden_trap_secondary_sound"):GetBool() and not self.LoopSound then
             self.LoopSound = CreateSound(self.currentOwner, Sound(song_path .. songs[math.random(#songs)]))
 
             if (self.LoopSound) then
