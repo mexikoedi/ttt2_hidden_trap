@@ -37,6 +37,7 @@ function ENT:Touch(toucher)
 
     if GetConVar("ttt2_hidden_trap_damage_popup"):GetBool() then
         net.Start("ttt2_hidden_trap_epop")
+        net.WriteInt(GetConVar("ttt2_hidden_trap_damage_popup_duration"):GetInt(), 32)
         net.Send(toucher)
     end
 

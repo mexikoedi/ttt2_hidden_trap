@@ -17,13 +17,19 @@ if SERVER then
     end
 end
 
-SWEP.Author = "mexikoedi"
 SWEP.Base = "weapon_tttbase"
 SWEP.HoldType = "normal"
+SWEP.Author = "mexikoedi"
 SWEP.PrintName = "Hidden Trap"
+SWEP.Contact = "Steam"
+SWEP.Instructions = "Left click to place traps for your enemies and secondary attack to play random sounds."
+SWEP.Purpose = "Create invisible traps and lure your enemies into them."
 SWEP.UseHands = true
 SWEP.Kind = WEAPON_EQUIP1
 SWEP.AutoSpawnable = false
+SWEP.Spawnable = false
+SWEP.AdminOnly = false
+SWEP.AdminSpawnable = false
 SWEP.Slot = 7
 SWEP.ViewModelFlip = false
 SWEP.ViewModelFOV = 54
@@ -73,7 +79,7 @@ if SERVER then
 
         if tr.HitWorld then
             local ent = ents.Create("ent_ttt2_hidden_trap")
-            if (not IsValid(ent)) then return end
+            if not IsValid(ent) then return end
             ent:SetPos(tr.HitPos)
             local ang = tr.HitPos:Angle()
             ang:RotateAroundAxis(ang:Right(), -90)
@@ -106,14 +112,14 @@ if SERVER then
         if GetConVar("ttt2_hidden_trap_secondary_sound"):GetBool() and not self.LoopSound then
             self.LoopSound = CreateSound(self.currentOwner, Sound(song_path .. songs[math.random(#songs)]))
 
-            if (self.LoopSound) then
+            if self.LoopSound then
                 self.LoopSound:Play()
             end
         end
     end
 
     function SWEP:KillSounds()
-        if (self.LoopSound) then
+        if self.LoopSound then
             self.LoopSound:Stop()
             self.LoopSound = nil
         end
