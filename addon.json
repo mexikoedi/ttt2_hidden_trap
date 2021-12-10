@@ -1,7 +1,10 @@
 {
-    "title": "TTT2 Hidden Trap",
+    "title": "[TTT2] Hidden Trap [WEAPON]",
     "type": "weapon",
-    "tags": "fun",
+    "tags": [
+        "realism",
+        "fun"
+    ],
     "description": "Place an invisible and dangerous trap for your enemies. You and all from your team are immune against it.",
     "ignore": [
         "*.psd",
