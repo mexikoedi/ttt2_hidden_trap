@@ -14,7 +14,7 @@ end
 function ENT:Touch(toucher)
     if not IsValid(toucher) or not IsValid(self) then return end
     if not toucher:IsPlayer() then return end
-    if SpecDM and toucher.IsGhost and toucher:IsGhost() then return end
+    if SpecDM and (toucher.IsGhost and toucher:IsGhost()) then return end
     local dmg = DamageInfo()
     local attacker = nil
     if IsValid(self:GetOwner()) then
