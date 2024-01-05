@@ -1,10 +1,8 @@
 CLGAMEMODESUBMENU.base = "base_gamemodesubmenu"
 CLGAMEMODESUBMENU.priority = 0
 CLGAMEMODESUBMENU.title = "submenu_addons_hidden_trap_title"
-
 function CLGAMEMODESUBMENU:Populate(parent)
     local form = vgui.CreateTTT2Form(parent, "header_addons_hidden_trap")
-
     form:MakeCheckBox({
         serverConvar = "ttt2_hidden_trap_primary_sound",
         label = "label_hidden_trap_primary_sound"
