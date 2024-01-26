@@ -50,7 +50,7 @@ SWEP.EquipMenuData = {
 }
 
 function SWEP:Initialize()
-    if CLIENT then self:AddHUDHelp("ttt2_hidden_trap_help1", "ttt2_hidden_trap_help2", true) end
+    if CLIENT then self:AddTTT2HUDHelp("ttt2_hidden_trap_help1", "ttt2_hidden_trap_help2") end
     if SERVER then
         self.Primary.ClipSize = GetConVar("ttt2_hidden_trap_clipSize"):GetInt()
         self.Primary.DefaultClip = GetConVar("ttt2_hidden_trap_ammo"):GetInt()
