@@ -1,5 +1,5 @@
 local songs = {}
-local song_path = "secondary/"
+local song_path = "secondary_hidden_trap/"
 if SERVER then
     AddCSLuaFile()
     resource.AddFile("materials/vgui/ttt/weapon_hidden_trap.vmt")
@@ -61,6 +61,7 @@ if SERVER then
     function SWEP:PrimaryAttack()
         if not self:CanPrimaryAttack() then return end
         self.currentOwner = self:GetOwner()
+        if not IsValid(self.currentOwner) then return end
         self:SetNextPrimaryFire(CurTime() + 1)
         local tr = util.TraceLine({
             start = self.currentOwner:GetShootPos(),
@@ -89,8 +90,9 @@ if SERVER then
     SWEP.NextSecondaryAttack = 0
     function SWEP:SecondaryAttack()
         if self.NextSecondaryAttack > CurTime() then return end
-        self.currentOwner = self:GetOwner()
         self.NextSecondaryAttack = CurTime() + self.Secondary.Delay
+        self.currentOwner = self:GetOwner()
+        if not IsValid(self.currentOwner) then return end
         if GetConVar("ttt2_hidden_trap_secondary_sound"):GetBool() and not self.LoopSound then
             self.LoopSound = CreateSound(self.currentOwner, Sound(song_path .. songs[math.random(#songs)]))
             if self.LoopSound then self.LoopSound:Play() end
