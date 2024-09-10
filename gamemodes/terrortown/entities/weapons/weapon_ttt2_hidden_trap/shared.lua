@@ -107,9 +107,7 @@ if SERVER then
     end
 
     function SWEP:OnRemove()
-        if IsValid(self.currentOwner) then
-            self:KillSounds()
-        end
+        if IsValid(self.currentOwner) then self:KillSounds() end
     end
 
     function SWEP:Holster()
@@ -141,7 +139,7 @@ if CLIENT then
             label = "label_hidden_trap_damage_sound"
         })
 
-        form:MakeCheckBox({
+        local masterDamage = form:MakeCheckBox({
             serverConvar = "ttt2_hidden_trap_damage_popup",
             label = "label_hidden_trap_damage_popup"
         })
@@ -151,7 +149,8 @@ if CLIENT then
             label = "label_hidden_trap_damage_popup_duration",
             min = 0,
             max = 15,
-            decimal = 0
+            decimal = 0,
+            master = masterDamage
         })
 
         form:MakeSlider({
