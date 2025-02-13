@@ -62,6 +62,7 @@ if SERVER then
         if not self:CanPrimaryAttack() then return end
         self.currentOwner = self:GetOwner()
         if not IsValid(self.currentOwner) then return end
+        self.currentOwner:LagCompensation(true)
         self:SetNextPrimaryFire(CurTime() + 1)
         local tr = util.TraceLine({
             start = self.currentOwner:GetShootPos(),
@@ -71,7 +72,11 @@ if SERVER then
 
         if tr.HitWorld then
             local ent = ents.Create("ent_ttt2_hidden_trap")
-            if not IsValid(ent) then return end
+            if not IsValid(ent) then
+                self.currentOwner:LagCompensation(false)
+                return
+            end
+
             ent:SetPos(tr.HitPos)
             local ang = tr.HitPos:Angle()
             ang:RotateAroundAxis(ang:Right(), -90)
@@ -85,6 +90,8 @@ if SERVER then
             self:TakePrimaryAmmo(1)
             if self:Clip1() <= 0 then self:Remove() end
         end
+
+        self.currentOwner:LagCompensation(false)
     end
 
     SWEP.NextSecondaryAttack = 0
