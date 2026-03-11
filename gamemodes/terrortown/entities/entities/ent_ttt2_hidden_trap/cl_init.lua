@@ -3,6 +3,7 @@ function ENT:Draw()
 end
 
 net.Receive("ttt2_hidden_trap_epop", function()
+    local hidden_trap_duration1 = 0
     hidden_trap_duration1 = net.ReadInt(32)
     EPOP:AddMessage({
         text = LANG.GetTranslation("ttt2_hidden_trap_popuptitle"),
